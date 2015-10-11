@@ -1,0 +1,12 @@
+body {
+	text-align: center;
+}
+
+.list-group-item {
+	width: 400px;
+	position: relative;
+}
+
+.list-group-item:hover {
+	background-color: #25E8F2;
+}

@@ -88,7 +88,7 @@ app.AppView = Backbone.View.extend({
 					console.log(hit);
 					var name = hit.brand_name + ' - ' + hit.item_name;
 					var calories = hit.nf_calories;
-					$( '#searchresults').append('<li>' + name + ' - ' + calories + ' calories</li>');
+					$( '#searchresults').append('<li class="list-group-item">' + name + ' - ' + calories + ' calories</li>');
 					$( 'li:last' ).on('click', (function(name, calories) {
 						return function() {
 							$( '#searchresults' ).hide();
