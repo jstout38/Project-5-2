@@ -74,7 +74,7 @@ app.AppView = Backbone.View.extend({
 		var id = '957c539e';
 		var key = '11b418d26e58ab2b327b0febb0e2b79f';
 		var query = this.$input.val().trim();
-		var url = 'https://api.nutritionix.com/v1_1/search/' + query + '?results=0:20&fields=brand_name%2Citem_name%2Cbrand_id%2Citem_id%2Cnf_calories&appId=' + id + '&appKey=' + key;
+		var url = 'https://api.nutritionix.com/v1_1/search/' + query + '?results=0:10&fields=brand_name%2Citem_name%2Cbrand_id%2Citem_id%2Cnf_calories&appId=' + id + '&appKey=' + key;
 
 		$.ajax({
 			'url': url,

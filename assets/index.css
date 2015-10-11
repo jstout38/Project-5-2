@@ -1,12 +1,18 @@
 body {
 	text-align: center;
+	background-color: black;
+	color: white;
 }
 
-.list-group-item {
-	width: 400px;
-	position: relative;
+input,
+button {
+	color: black;
 }
 
 .list-group-item:hover {
 	background-color: #25E8F2;
+}
+
+#searchresults {
+	color: black;
 }
