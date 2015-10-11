@@ -68,9 +68,50 @@ app.AppView = Backbone.View.extend({
 			return;
 		}
 
-		app.Foods.create( this.newAttributes() );
-		this.$input.val('');
+		//app.Foods.create( this.newAttributes() );
+		//this.$input.val('');
+
+		var id = '957c539e';
+		var key = '11b418d26e58ab2b327b0febb0e2b79f';
+		var query = this.$input.val().trim();
+		var url = 'https://api.nutritionix.com/v1_1/search/' + query + '?results=0:20&fields=brand_name%2Citem_name%2Cbrand_id%2Citem_id%2Cnf_calories&appId=' + id + '&appKey=' + key;
+
+		$.ajax({
+			'url': url,
+			'dataType': 'json',
+			'success': function(data, textStats, XMLHttpRequest) {
+				console.log(data);
+				$( "#searchresults" ).html('');
+				$( "#searchresults" ).show();
+				for (var i = 0; i < data.hits.length; i++) {
+					var hit = data.hits[i].fields;
+					console.log(hit);
+					var name = hit.brand_name + ' - ' + hit.item_name;
+					var calories = hit.nf_calories;
+					$( '#searchresults').append('<p>' + name + ' - ' + calories + ' calories<p>');
+					/*var brand_name = '';
+					var item_name = '';
+					var calories = 0;
+					if (hit.brand_name) {
+						brand_name = hit.brand_name;
+					}
+					if (hit.item_name) {
+						item_name = hit.item_name;
+					}
+					var name = brand_name + ' - ' + item_name;
+					if (hit.nf_calories) {
+						var calories = hit.nf_calories;
+					}
+					$( "#searchresults" ).append('<p>' + name + ' - ' + calories + ' calories<p>');*/
+				}
+			},
+			//Error Handling
+			'error': function() {
+				alert('There was a problem talking to Nutritionix. Please try again later!');
+			}
+		});
 	},
+
 
 	deleteChecked: function() {
 		_.invoke(app.Foods.checked(), 'destroy');
