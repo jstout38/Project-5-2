@@ -88,21 +88,18 @@ app.AppView = Backbone.View.extend({
 					console.log(hit);
 					var name = hit.brand_name + ' - ' + hit.item_name;
 					var calories = hit.nf_calories;
-					$( '#searchresults').append('<p>' + name + ' - ' + calories + ' calories<p>');
-					/*var brand_name = '';
-					var item_name = '';
-					var calories = 0;
-					if (hit.brand_name) {
-						brand_name = hit.brand_name;
-					}
-					if (hit.item_name) {
-						item_name = hit.item_name;
-					}
-					var name = brand_name + ' - ' + item_name;
-					if (hit.nf_calories) {
-						var calories = hit.nf_calories;
-					}
-					$( "#searchresults" ).append('<p>' + name + ' - ' + calories + ' calories<p>');*/
+					$( '#searchresults').append('<li>' + name + ' - ' + calories + ' calories</li>');
+					$( 'li:last' ).on('click', (function(name, calories) {
+						return function() {
+							$( '#searchresults' ).hide();
+							app.Foods.create({
+								name: name,
+								calories: calories,
+								checked: false
+							});
+							this.$input.val('');
+						}
+					})(name, calories));
 				}
 			},
 			//Error Handling
