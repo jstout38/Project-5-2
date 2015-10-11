@@ -10,7 +10,7 @@ var Foods = Backbone.Collection.extend({
 		var total = 0;
 		this.each( function( food ) {
 			var calories = food.get('calories');
-			total =+ calories;
+			total += calories;
 		});
 		return total;
 	},
