@@ -5,7 +5,8 @@ app.Food = Backbone.Model.extend ({
 	defaults: {
 		name: '',
 		calories: 0,
-		checked: false
+		checked: false,
+		quantity: ''
 	},
 
 	toggle: function() {

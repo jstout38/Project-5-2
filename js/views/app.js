@@ -88,14 +88,16 @@ app.AppView = Backbone.View.extend({
 					console.log(hit);
 					var name = hit.brand_name + ' - ' + hit.item_name;
 					var calories = hit.nf_calories;
-					$( '#searchresults').append('<li class="list-group-item">' + name + ' - ' + calories + ' calories</li>');
+					var quantity = String(hit.nf_serving_size_qty) + ' ' + hit.nf_serving_size_unit;
+					$( '#searchresults').append('<li class="list-group-item">' + name + ' - ' + calories + ' calories -' + quantity + '</li>');
 					$( 'li:last' ).on('click', (function(name, calories) {
 						return function() {
 							$( '#searchresults' ).hide();
 							app.Foods.create({
 								name: name,
 								calories: calories,
-								checked: false
+								checked: false,
+								quantity: quantity
 							});
 							this.$input.val('');
 						}

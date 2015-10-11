@@ -3,7 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Healthy Eating App</title>
+	<link href='https://fonts.googleapis.com/css?family=Marck+Script' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="assets/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="assets/index.css">
@@ -11,27 +13,38 @@
 <body>
 	<section id="healthApp">
 		<header id="header">
-			<h1>Today's foods</h1>
-			<input id="new-food" placeholder="What are you eating?" autofocus>
+			<h1>Daily Fitness Calorie Counter</h1>
+			<input id="new-food" class="form-control" placeholder="What are you eating?" autofocus>
 		</header>
 		<div><ul id="searchresults" class="list-group"></ul></div>
 		<section id="main">
-			<input id="toggle-all" type="checkbox">
-			<label for="toggle-all">Mark all for deletion</label>
-			<ul id="foods"></ul>
+			<div id="list-header" class="row">
+				<span id="eaten" class="col-md-6">
+					Eaten today:
+				</span>
+				<span id="mark-all" class="col-md-6">
+					<input id="toggle-all" type="checkbox">
+					<label for="toggle-all">Mark all for deletion</label>
+				</span>
+			</div>
+			<div class="row">
+				<ul id="foods" class="list-group"></ul>
+			</div>
 		</section>
-		<footer id="footer"></footer>
+		<footer id="footer" class="row"></footer>
 	</section>
 	<script type="text/template" id="item-template">
-		<div class="view">
+		<div class="list-group-item">
 			<input class="toggle" type="checkbox" <%= checked ? 'checked' : '' %>>
-			<label><%= name %></label>
-			<button class="destroy"></button>
+			<label><%= name %> - <%= calories %> calories - <%= quantity %></label>
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
 		</div>
 	</script>
 	<script type="text/template" id="calorielist-template">
-		<span id="calorie-count"><strong><%= calorieCount %></strong> calories total</span>
-		<button id="delete-checked">Delete checked foods </button>
+		<button class="btn btn-default" id="delete-checked">Delete checked foods </button>
+		<div class="row" id="caloriecount">
+			<span class="col-md-12" id="calorie-count">You have consumed a total of <strong><%= calorieCount %></strong> calories today</span>
+		</div>
 	</script>
 	<script src="js/lib/jquery.min.js"></script>
 	<script src="js/lib/underscore-min.js"></script>

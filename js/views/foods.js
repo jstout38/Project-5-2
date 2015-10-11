@@ -8,7 +8,7 @@ app.FoodView = Backbone.View.extend({
 
 	events: {
 		'click .toggle': 'toggleCheck',
-		'click .destroy': 'clear'
+		'click .glyphicon': 'clear'
 	},
 
 	initialize: function() {
