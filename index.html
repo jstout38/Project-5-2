@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Healthy Eating App</title>
+	<link rel="stylesheet" href="assets/index.css">
+</head>
+<body>
+	<section id="healthApp">
+		<header id="header">
+			<h1>Today's foods</h1>
+			<input id="new-food" placeholder="What are you eating?" autofocus>
+		</header>
+		<section id="main">
+			<input id="toggle-all" type="checkbox">
+			<label for="toggle-all">Mark all for deletion</label>
+			<ul id="foods"></ul>
+		</section>
+		<footer id="footer"></footer>
+	</section>
+	<script type="text/template" id="item-template">
+		<div class="view">
+			<input class="toggle" type="checkbox" <%= checked ? 'checked' : '' %>>
+			<label><%= name %></label>
+			<button class="destroy"></button>
+		</div>
+	</script>
+	<script type="text/template" id="calorielist-template">
+		<span id="calorie-count"><strong><%= calorieCount %></strong> calories total</span>
+		<button id="delete-checked">Delete checked foods </button>
+	</script>
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/underscore-min.js"></script>
+	<script src="js/lib/backbone-min.js"></script>
+	<script src="js/lib/backbone.localStorage-min.js"></script>
+	<script src="js/models/food.js"></script>
+	<script src="js/collections/foods.js"></script>
+	<script src="js/views/foods.js"></script>
+	<script src="js/views/app.js"></script>
+	<!--<script src="js/routers/router.js"></script>-->
+	<script src="js/app.js"></script>
+
+</body>
+</html>
