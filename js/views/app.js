@@ -103,7 +103,7 @@ app.AppView = Backbone.View.extend({
 								quantity: quantity
 							});
 							//Reset the search box
-							this.$input.val('');
+							$('#new-food').val('');
 						};
 					})(name, calories));
 				}
